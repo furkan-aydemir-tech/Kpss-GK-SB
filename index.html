@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KPSS Hap Bilgiler Soru Bankası</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.4s ease-out forwards; }
+        
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-900 font-sans text-slate-900 flex items-center justify-center sm:p-6 overflow-hidden select-none">
+
+    <!-- 1080x2400 Ratio Mobile Simulator Viewport -->
+    <div id="app-container" class="w-full h-[100dvh] sm:w-[432px] sm:h-[960px] sm:max-h-[90vh] bg-white sm:rounded-[3rem] sm:border-[14px] sm:border-slate-950 shadow-2xl overflow-hidden flex flex-col relative">
+        <!-- Content will be injected here by JS -->
+    </div>
+
+    <script>
+        // --- VERİTABANI (DATA) ---
+        const RAW_HISTORY_DATA = `1. Asya Hun Devleti: Bilinen ilk Türk devletidir, kurucusu Teoman'dır.
+2. Mete Han: Onlu sistemi bulmuş, Orta Asya Türk siyasi birliğini ilk kez sağlamıştır.
+3. Kavimler Göçü: Roma ikiye ayrıldı, feodalite ortaya çıktı, İlk Çağ kapandı.
+4. Avrupa Hun Devleti: Kurucusu Balamir'dir. En parlak dönemi "Tanrı'nın Kırbacı" Attila dönemidir.
+5. I. Göktürk Devleti: Türk adını siyasi bir isim olarak kullanan ilk devlettir.
+6. Uygurlar: Yerleşik hayata geçen ilk Türk devletidir. Maniheizm dinini benimsemişlerdir.
+7. İskitler (Sakalar): Bilinen ilk Türk topluluğudur. Alp Er Tunga ve Tomris Hatun en önemli isimleridir.
+8. Kut İnancı: Hükümdarlığın Tanrı tarafından verildiğine inanılmasıdır (Veraset sistemini etkiler).
+9. Kurultay (Toy): Devlet işlerinin görüşüldüğü meclistir.
+10. Töre: Yazısız hukuk kurallarıdır. Hükümdar dahil herkes uymak zorundadır.
+11. Orhun Abideleri: Türk tarihinin ilk yazılı belgeleridir (II. Göktürk/Kutluk dönemi).
+12. Hazarlar: Museviliği benimseyen tek Türk devletidir.
+13. Peçenekler: Devlet kuramamış, Bizans ordusunda ücretli askerlik yapmışlardır.
+14. Balbal: Ölen savaşçının öldürdüğü düşman sayısı kadar dikilen heykelciklerdir (Ahiret inancı göstergesi).
+15. İkili Teşkilat: Devletin Doğu-Batı olarak yönetilmesidir (Federatif yapı).
+16. Talas Savaşı: Türklerin İslamiyet'i tanımaya başladığı savaştır.
+17. Karahanlılar: Orta Asya'da kurulan ilk Müslüman Türk devletidir. Resmi dilleri Türkçedir.
+18. Gazneli Mahmut: Sultan unvanını kullanan ilk Türk hükümdarıdır.
+19. Büyük Selçuklu Devleti: Tuğrul ve Çağrı Beyler tarafından kurulmuştur.
+20. Dandanakan Savaşı: Selçukluların kuruluşu kesinleşmiş, Gazneliler yıkılış sürecine girmiştir.
+21. Malazgirt Savaşı (1071): Anadolu'nun kapıları Türklere açıldı.
+22. Nizamülmülk: Siyasetname adlı eseriyle ve Nizamiye Medreseleriyle ünlüdür.
+23. Yassıçemen Savaşı: Anadolu Selçuklu'nun Harzemşahları yendiği, Moğol istilasına zemin hazırlayan savaştır.
+24. Kösedağ Savaşı: Anadolu Selçuklu Devleti Moğollara yenilmiş ve yıkılış sürecine girmiştir.
+25. Divan-ı Saltanat: Büyük Selçuklularda devlet işlerinin yürütüldüğü ana divandır.
+26. İkta Sistemi: Toprağın vergi gelirine göre asker yetiştirilmesidir.
+27. Atabey: Meliklerin (şehzadelerin) eğitmeni.
+28. Miryokefalon Savaşı: Anadolu'nun Türk yurdu olduğu kesinleşti ("Yurttutan" Savaşı).
+29. Divan-ı Lügatit Türk: Kaşgarlı Mahmut tarafından yazılan ilk Türkçe sözlüktür.
+30. Kutadgu Bilig: Yusuf Has Hacip tarafından yazılan ilk siyasetnamedir.
+31. Osman Bey: İlk Osmanlı parası (bakır) bastırıldı.
+32. Orhan Bey: İlk düzenli ordu (Yaya ve Müsellem) kuruldu, ilk medrese açıldı.
+33. I. Murat: "Ülke padişah ve oğullarınındır" anlayışını getirdi. Yeniçeri Ocağı kuruldu.
+34. Yıldırım Bayezid: Anadolu Türk siyasi birliğini büyük ölçüde sağladı. Ankara Savaşı'nda Timur'a yenildi.
+35. II. Mehmet (Fatih): İstanbul'u fethetti. "Ülke sadece padişahındır" anlayışını getirdi.
+36. Yavuz Sultan Selim: Halifelik Osmanlı'ya geçti. Baharat Yolu kontrol altına alındı.
+37. Kanuni Sultan Süleyman: Osmanlı'nın en uzun süre tahtta kalan ve en parlak dönemini yaşatan padişahıdır.
+38. Preveze Deniz Zaferi: Akdeniz "Türk Gölü" haline geldi.
+39. II. Selim: Ordunun başında sefere çıkma geleneğini bırakan ilk padişahtır.
+40. Karlofça Antlaşması: Osmanlı'nın batıda ilk kez büyük çapta toprak kaybettiği antlaşmadır.
+41. Küçük Kaynarca Antlaşması: Kırım bağımsız oldu, Rusya'ya kapitülasyon verildi.
+42. Sancak Sistemi: Şehzadelerin tecrübe kazanması için illere gönderilmesidir.
+43. Enderun: Saray içindeki memur yetiştiren okul.
+44. Nişancı: Padişahın tuğrasını çeker, fethedilen toprakları tapu tahrir defterine kaydeder.
+45. Vakıf Sistemi: Sosyal yardımlaşma ve hayır kurumlarının finansmanını sağlar.
+46. Millet Sistemi: Toplumun din veya mezhep esasına göre örgütlenmesidir.
+47. Devşirme: Hristiyan çocukların alınıp asker veya bürokrat yapılmasıdır.
+48. Tımar Sistemi: Taşrada hem güvenlik hem tarım üretiminin sürekliliğini sağlayan sistem.
+49. Müsadere: Devletin, haksız kazanç sağlayan veya vefat eden memurun malına el koymasıdır.
+50. Şeyhülislam: Divan'da alınan kararların dine uygunluğunu denetler (fetva verir).
+51. III. Selim: Nizam-ı Cedid ordusunu kurdu. İlk kalıcı elçilikleri açtı.
+52. II. Mahmut: Yeniçeri Ocağı'nı kaldırdı (Vaka-i Hayriye). Muhtarlıklar kuruldu.
+53. Tanzimat Fermanı (1839): Kanun gücünün üstünlüğü ilk kez kabul edildi.
+54. Islahat Fermanı (1856): Azınlıklara geniş haklar verildi.
+55. I. Meşrutiyet (1876): Türk tarihinin ilk anayasası olan Kanun-i Esasi ilan edildi.
+56. II. Abdülhamit: İstibdat dönemi ve 31 Mart Vakası (rejime karşı ilk isyan) bu dönemdedir.
+57. Berlin Antlaşması: Sırbistan, Karadağ ve Romanya bağımsız oldu.
+58. Sened-i İttifak: Padişahın yetkileri ilk kez kısıtlandı (II. Mahmut - Ayanlar).
+59. Düyun-u Umumiye: Osmanlı'nın dış borçlarını ödeyememesi üzerine kurulan Genel Borçlar İdaresi.
+60. İttihat ve Terakki: II. Meşrutiyet'in ilanında etkili olan cemiyet.
+61. Trablusgarp Savaşı: Mustafa Kemal'in ilk askeri başarısı (Derne ve Tobruk).
+62. Uşi Antlaşması: Osmanlı Kuzey Afrika'daki son toprak parçasını kaybetti.
+63. I. Balkan Savaşı: Osmanlı Midye-Enez hattının batısını kaybetti.
+64. Bâb-ı Ali Baskını: Osmanlı'da ilk hükümet darbesidir.
+65. I. Dünya Savaşı Nedenleri: Milliyetçilik ve Sömürgecilik.
+66. Çanakkale Cephesi: I. Dünya Savaşı'nın süresini uzatan tek kazanan cephemizdir.
+67. Kafkas Cephesi: İlk açılan taarruz cephesidir. Sarıkamış Harekatı burada gerçekleşti.
+68. Kanal Cephesi: İngiltere'nin sömürge yollarını kesmek için açılan taarruz cephesidir.
+69. Hicaz-Yemen Cephesi: "Çöl Kaplanı" Fahrettin Paşa'nın Medine müdafaası ünlüdür.
+70. Suriye-Filistin Cephesi: Mustafa Kemal'in I. Dünya Savaşı'ndaki son görevi (Yıldırım Orduları).
+71. Mondros Ateşkesi: Osmanlı Devleti fiilen sona erdi. 7. madde en tehlikeli maddedir.
+72. İzmir'in İşgali (15 Mayıs 1919): Milli bilincin uyanmasında en etkili olaydır.
+73. Yararlı Cemiyetler: Kilikyalılar, Trakya Paşaeli, Müdafaa-i Hukuk cemiyetleri.
+74. Zararlı Cemiyetler: Mavri Mira, Pontus Rum, Etnik-i Etrerya (Rumlar); Hınçak ve Taşnak (Ermeniler).
+75. Samsun'a Çıkış (19 Mayıs 1919): Milli Mücadele fiilen başladı.
+76. Amasya Genelgesi: Milli Mücadele'nin amacı, gerekçesi ve yöntemi ilk kez belirtildi.
+77. Erzurum Kongresi: Manda ve himaye ilk kez reddedildi. İlk kez milli sınırlardan bahsedildi.
+78. Sivas Kongresi: Tüm cemiyetler "Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti" altında birleşti.
+79. Amasya Görüşmeleri: Temsil Heyeti, İstanbul Hükümeti tarafından resmen tanındı.
+80. Misak-ı Milli: Son Osmanlı Mebusan Meclisi'nde kabul edilen milli yemin/hedefler.
+81. TBMM'nin Açılması (23 Nisan 1920): Yeni bir devletin temelleri atıldı.
+82. Hiyanet-i Vataniye Kanunu: TBMM'ye karşı çıkan isyanları bastırmak için çıkarıldı.
+83. Sevr Antlaşması: Ölü doğmuş bir antlaşmadır (Meclis onayından geçmediği için).
+84. Gümrü Antlaşması: TBMM'nin ilk siyasi başarısıdır (Ermenilerle).
+85. I. İnönü Savaşı: Düzenli ordunun ilk zaferidir. Teşkilat-ı Esasiye ve İstiklal Marşı kabul edildi.
+86. Londra Konferansı: TBMM ilk kez İtilaf Devletleri tarafından resmen tanındı.
+87. Moskova Antlaşması: Sovyet Rusya TBMM'yi tanıyan ilk büyük Avrupalı devlet oldu.
+88. Kütahya-Eskişehir Savaşları: Düzenli ordunun tek yenilgisidir.
+89. Tekalif-i Milliye Emirleri: Ordunun ihtiyaçlarını karşılamak için halktan toplanan yardımlar.
+90. Sakarya Meydan Muharebesi: Türk ordusunun II. Viyana'dan beri süren geri çekilişi sona erdi.
+91. Büyük Taarruz: Anadolu'nun işgalden kurtarıldığı son askeri darbe.
+92. Mudanya Ateşkesi: İstanbul, Boğazlar ve Doğu Trakya savaşsız kurtarıldı.
+93. Lozan Antlaşması: Yeni Türk devletinin tapusu; kapitülasyonlar kesin olarak kaldırıldı.
+94. Saltanatın Kaldırılması: Milli egemenlik önündeki en büyük engel kalktı.
+95. Cumhuriyetin İlanı (29 Ekim 1923): Rejim ve devlet başkanlığı sorunu çözüldü.
+96. Halifeliğin Kaldırılması (3 Mart 1924): Laikleşme yolundaki en önemli adım.
+97. Tevhid-i Tedrisat Kanunu: Eğitim ve öğretim birleştirildi.
+98. Medeni Kanun (1926): Kadın-erkek eşitliği (sosyal ve ekonomik) sağlandı. Siyasi hak yok!
+99. Harf İnkılabı (1928): Okuma yazma oranını artırmak amaçlandı.
+100. Soyadı Kanunu (1934): Toplumdaki lakap karmaşası ve sınıf ayrımı önlendi.
+101. Cumhuriyetçilik: Seçim, oy, meclis, milli irade anahtar kelimelerdir.
+102. Milliyetçilik: Türk dili, Türk tarihi, bağımsızlık, milli bilinç anahtar kelimelerdir.
+103. Halkçılık: Eşitlik, ayrıcalıksız toplum, sosyal devlet.
+104. Devletçilik: Ekonomi, yatırım, karma ekonomi modeli (1929 krizinden sonra).
+105. Laiklik: Din-devlet işleri ayrımı, akıl ve bilim.
+106. İnkılapçılık: Çağdaşlaşma, yenilik, dinamizm.
+107. Nüfus Mübadelesi: Yunanistan ile yaşanan etapli sorunu.
+108. Milletler Cemiyeti (1932): Türkiye'nin dünya barışına katkı sağlamak için üye olması.
+109. Balkan Antantı (1934): Batı sınırını güvenceye almak (Almanya ve İtalya tehdidine karşı).
+110. Montrö Boğazlar Sözleşmesi (1936): Boğazlar tam hakimiyetimize geçti.
+111. Sadabat Paktı (1937): Doğu sınırını güvenceye almak.
+112. Hatay'ın Anavatana Katılması (1939): Atatürk'ün vefatından sonra gerçekleşmiştir.
+113. Terakkiperver Cumhuriyet Fırkası: İlk muhalefet partisi.
+114. Serbest Cumhuriyet Fırkası: İkinci muhalefet partisi.
+115. Şeyh Sait İsyanı: Çok partili hayata geçişin ilk kesintisi.
+116. Nutuk: 1919-1927 yıllarını kapsayan Atatürk'ün eseridir.
+117. İkinci Dünya Savaşı: Türkiye'nin "Aktif Tarafsızlık" politikası izlediği dönem.
+118. Truman Doktrini ve Marshall Planı: ABD'nin SSCB tehdidine karşı Türkiye'ye yaptığı yardımlar.
+119. NATO (1952): Türkiye'nin Kore Savaşı'na asker göndererek üye olduğu örgüt.
+120. Demokrat Parti (1950): "Beyaz İhtilal" ile tek parti döneminin sona ermesi.`;
+
+const RAW_GEO_DATA = `Soru 1: Türkiye, dünya üzerindeki koordinatları dikkate alındığında aşağıdaki paralel ve meridyen yaylarının hangisinde yer alır?
+A) 26°-45° Kuzey paralelleri — 36°-42° Doğu meridyenleri
+B) 36°-42° Kuzey paralelleri — 26°-45° Doğu meridyenleri
+C) 36°-42° Güney paralelleri — 26°-45° Batı meridyenleri
+D) 26°-45° Güney paralelleri — 36°-42° Doğu meridyenleri
+E) 36°-42° Kuzey paralelleri — 26°-45° Batı meridyenleriCevap: B
+Soru 2: Türkiye sınırları içerisindeki herhangi bir cismin gölge boyunun yıl boyunca hiçbir zaman sıfır olmamasının temel nedeni aşağıdakilerden hangisidir?
+A) Üç tarafının denizlerle çevrili olması
+B) Dağların genellikle doğu-batı yönünde uzanması
+C) Ortalama yükseltisinin fazla olması
+D) Güneş ışınlarının hiçbir zaman 90°lik dik açıyla gelmemesi
+E) Kuzey Yarım Küre'nin orta kuşağında yer almasıCevap: D
+Soru 3: Türkiye'de bakı etkisine bağlı olarak dağların güney yamaçları kuzey yamaçlarına göre genellikle daha sıcaktır. Aşağıdaki bölgelerin hangisinde denizellik ve nemlilik faktörlerinden ötürü bu duruma istisna teşkil eden bir durum görülür?
+A) Akdeniz
+B) Ege
+C) Karadeniz
+D) Marmara
+E) İç AnadoluCevap: C
+Soru 4: Dünyanın eksen çizgisi etrafındaki dönüş hızını ifade eden "çizgisel hız", Türkiye haritası üzerinde göz önüne alındığında en fazla ve en az hangi illerimizde hissedilir?
+A) En fazla Sinop, en az Hatay
+B) En fazla Iğdır, en az İzmir
+C) En fazla Hatay, en az Sinop
+D) En fazla Antalya, en az Artvin
+E) En fazla Mersin, en az KırklareliCevap: C
+Soru 5: Türkiye'de yerel saati en ileri olan ilimiz ve ülkenin yıl boyunca ulusal saat olarak kullandığı (+3. saat dilimi) merkez aşağıdakilerin hangisinde doğru verilmiştir?
+A) Iğdır
+B) Edirne
+C) Sinop
+D) Hatay
+E) AnkaraCevap: A
+Soru 6: 21 Haziran tarihinde Türkiye'de en uzun gündüz süresini yaşamak ve gün içinde güneşin en uzun süre gökyüzünde kaldığına şahit olmak isteyen bir gözlemci hangi yöne ve şehre doğru seyahat etmelidir?
+A) Güneye - Hatay
+B) Doğuya - Iğdır
+C) Batıya - İzmir
+D) Kuzeye - Sinop
+E) Güneydoğuya - ŞanlıurfaCevap: D
+Soru 7: 21 Aralık tarihinde Türkiye'de en uzun gece süresinin yaşandığı dönemde, kuzey yönüne doğru ilerleyen bir araştırmacı gece süresinin nasıl değiştiğini gözlemler ve en uzun geceye hangi ilde ulaşır?
+A) Gece süresi kısalır - Hatay
+B) Gece süresi uzar - Sinop
+C) Gece süresi değişmez - Ankara
+D) Gece süresi uzar - Hatay
+E) Gece süresi kısalır - SinopCevap: B
+Soru 8: Yılda iki kez tekrarlanan ve Dünyanın her yerinde gece-gündüz eşitliğinin (ekinoks) yaşandığı tarihler aşağıdakilerin hangisinde doğru eşleştirilmiştir?
+A) 21 Haziran - 21 Aralık
+B) 21 Mart - 21 Haziran
+C) 21 Mart - 23 Eylül
+D) 23 Eylül - 21 Aralık
+E) 1 Ocak - 23 EylülCevap: C
+Soru 9: Türkiye'nin İstanbul ve Çanakkale Boğazlarına sahip olması, önemli enerji koridorlarının merkezinde yer alması ve üç kıtanın kesişim noktasında bulunması hangi coğrafi konumunun bir sonucudur?
+A) Matematik Konum
+B) Jeopolitik Konum
+C) Mutlak Konum
+D) Astronomik Konum
+E) Klimatik KonumCevap: B
+Soru 10: Türkiye'nin en işlek sınır kapıları olan Habur (Irak) ve Gürbulak (İran) düşünüldüğünde, bu komşularımızdan hangisiyle olan sınırımız ülkemizin "en eski" ve en az değişen sınır kapısını oluşturur?
+A) Irak Sınırı
+B) Suriye Sınırı
+C) Yunanistan Sınırı
+D) İran Sınırı
+E) Ermenistan SınırıCevap: D
+Soru 11: Türkiye'nin yer şekillerinin genel görünümü incelendiğinde, ortalama yükseltisinin 1132 metre olması ve engebeli bir yapı sunması ülkemizin hangi temel özelliğini kanıtlar?
+A) Yaşlı bir kütle olduğunu
+B) Genç, yüksek ve engebeli bir ülke olduğunu
+C) Erozyonun etkisinin azaldığını
+D) Tamamen ovalarla kaplı olduğunu
+E) Karstik aşınımın durduğunuCevap: B
+Soru 12: Türkiye'deki dağların genellikle doğu-batı yönlü uzanmasının jeolojik ve morfolojik sonuçları dikkate alındığında, bu durum iç kesimlerle kıyı arasındaki hangi faaliyeti doğrudan zorlaştırmıştır?
+A) Tarımsal üretimi
+B) Ulaşım ve taşımacılığı
+C) Maden arama çalışmalarını
+D) Turizm faaliyetlerini
+E) Hayvancılık türleriniCevap: B
+Soru 13: Ege Bölgesi'nde dağların denize dik uzanmasının kıyı morfolojisine etkisi aşağıdakilerin hangisinde doğru ifade edilmiştir?
+A) Kıyı boyuna tipte olup falezler yaygındır.
+B) Kıyı girintili çıkıntılıdır ve kıta sahanlığı geniştir.
+C) Kıta sahanlığı çok dardır ve limanların hinterlandı dardır.
+D) Deniz derinliği kıyıdan hemen sonra aniden artar.
+E) Kıyı şeridi boyunca hiçbir delta ovası oluşamaz.Cevap: B
+Soru 14: Karadeniz ve Akdeniz bölgelerinde dağların denize paralel uzanmasının bir sonucu olarak ortaya çıkan kıyı tipi ve yaygın yer şekli aşağıdakilerden hangisidir?
+A) Dalmaçya kıyı tipi - Delta ovaları
+B) Ria kıyı tipi - Tombolo
+C) Boyuna kıyı tipi - Falez (yalıyar)
+D) Enine kıyı tipi - Kıyı oku
+E) Haliçli kıyı tipi - FiordCevap: C
+Soru 15: Türkiye'deki kıyı ovaları içerisinde yer alan ve ülkemizin en büyük delta ovası olma özelliğini taşıyan ova aşağıdakilerden hangisidir?
+A) Bafra
+B) Çarşamba
+C) Çukurova
+D) Silifke
+E) MenemenCevap: C
+Soru 16: Lapya, dolin, uvala, polye ve obruk gibi karstik erime şekillerine Türkiye'de en yoğun şekilde hangi platolarda rastlanır?
+A) Erzurum - Kars platoları
+B) Haymana - Cihanbeyli platoları
+C) Teke - Taşeli platoları
+D) Çatalca - Kocaeli platoları
+E) Yazılıkaya platosuCevap: C
+Soru 17: Türkiye'deki volkanik dağlar düşünüldüğünde, en genci olan volkanik oluşum ile ülkemizin en yüksek volkanik dağı sırasıyla hangisinde doğru verilmiştir?
+A) Nemrut Dağı - Süphan Dağı
+B) Manisa-Kula Volkanları - Ağrı Dağı
+C) Erciyes Dağı - Hasan Dağı
+D) Karacadağ - Tendürek Dağı
+E) Uludağ - Manisa-Kula VolkanlarıCevap: B
+Soru 18: Türkiye'nin yüksek depremsellik riskine sahip olmasında rol oynayan üç ana fay hattı (KAF, DAF, BAF) aşağıdakilerden hangisini simgelemektedir?
+A) Kuzey Anadolu, Doğu Anadolu, Batı Anadolu Fay Hatları
+B) Karadeniz, Akdeniz, Bursa Fay Hatları
+C) Konya, Diyarbakır, Bolu Aktif Fayları
+D) Güney Anadolu, İç Anadolu, Trakya Fayları
+E) Kıvrımlı, Kırıklı, Volkanik Deprem AlanlarıCevap: A
+Soru 19: Türkiye'de platoların en yoğun bulunduğu coğrafi bölge ile ülkemizin en yüksek ve volkanik özelliğe sahip platosu aşağıdakilerin hangisinde doğru verilmiştir?
+A) Ege Bölgesi - Perşembe Platosu
+B) İç Anadolu Bölgesi - Erzurum-Kars Platosu
+C) Akdeniz Bölgesi - Teke Platosu
+D) Güneydoğu Anadolu - Ardahan Platosu
+E) Marmara Bölgesi - Çatalca PlatosuCevap: B
+Soru 20: Türkiye'nin deniz ve okyanus kıyısı özellikleri düşünüldüğünde, ülkemizde Haliçli ve Skyer kıyı tiplerinin görülmemesinin temel sebebi aşağıdakilerden hangisidir?
+A) Akarsu rejimlerinin düzensiz olması
+B) Dağların kıyıya paralel uzanması
+C) Okyanusa kıyısının bulunmaması (gelgit genliğinin azlığı)
+D) İç denizlerde akıntıların çok güçlü olması
+E) Buzullaşmanın deniz seviyesine kadar inmemiş olmasıCevap: C
+Soru 21: Yazları sıcak ve kurak, kışları ise ılık ve yağışlı geçen, karakteristik bitki örtüsü "Maki" olan iklim tipi aşağıdakilerden hangisidir?
+A) Karadeniz İklimi
+B) Akdeniz İklimi
+C) Step (Bozkır) İklimi
+D) Sert Karasal İklim
+E) Ilıman Karasal İklimCevap: B
+Soru 22: Her mevsimi yağışlı olan, en fazla yağışını sonbahar mevsiminde alan ve doğal bitki örtüsü gür ormanlardan oluşan iklim tipi hangisidir?
+A) Akdeniz İklimi
+B) Sert Karasal İklim
+C) Karadeniz İklimi
+D) Step İklimi
+E) Muson İklimiCevap: C
+Soru 23: Türkiye'de etki alanı en yaygın olan, en fazla yağışı ilkbahar mevsiminde alan ve bitki örtüsü insanların ormanları tahrip etmesiyle oluşan "Antropojen Bozkır" olan iklim tipi aşağıdakilerden hangisidir?
+A) Karadeniz İklimi
+B) Sert Karasal İklim
+C) Akdeniz İklimi
+D) Step (Bozkır) İklimi
+E) Subtropikal İklimCevap: D
+Soru 24: Erzurum-Kars çevresinde etkili olan, en çok yağışı yaz mevsiminde alan ve gür çayır bitki örtüsüne sahip olan iklim türü hangisidir?
+A) Step İklimi
+B) Akdeniz İklimi
+C) Sert Karasal İklim
+D) Karadeniz İklimi
+E) Tundra İklimiCevap: C
+Soru 25: Kış sıcaklıklarının düşmesine bağlı olarak gerçekleşen "donlu gün sayısı" Türkiye'de en çok ve en az hangi bölgelerde/alanlarda görülür?
+A) En çok İç Anadolu'da, en az Karadeniz kıyılarında
+B) En çok Doğu Anadolu'da, en az Akdeniz kıyılarında
+C) En çok Marmara'da, en az Ege kıyılarında
+D) En çok Güneydoğu'da, en az Doğu Karadeniz'de
+E) En çok Doğu Anadolu'da, en az Trakya'daCevap: B
+Soru 26: Havada bulunan su buharının o sıcaklıktaki doymuş nem miktarına oranını ifade eden ve yağış ihtimali ile doğru orantılı olan "bağıl nem", Türkiye'de en yüksek hangi bölgededir?
+A) Güneydoğu Anadolu Bölgesi
+B) Akdeniz Bölgesi
+C) Karadeniz Bölgesi
+D) İç Anadolu Bölgesi
+E) Ege BölgesiCevap: C
+Soru 27: Sıcaklık arttıkça havanın nem taşıma kapasitesinin artmasını ifade eden "maksimum nem", Türkiye'de yaz mevsiminde sıcaklığın ve buharlaşmanın şiddetli olmasına bağlı olarak en yüksek hangi bölgededir?
+A) Karadeniz Anadolu Bölgesi
+B) Marmara Bölgesi
+C) Doğu Anadolu Bölgesi
+D) Güneydoğu Anadolu Bölgesi
+E) Ege BölgesiCevap: D
+Soru 28: Türkiye'yi etkileyen yerel rüzgarlar "KAYIP SAKAL" şifrelemesi ile kodlanmaktadır. Bu kodlamaya göre Türkiye'ye güney yönlerden esen sıcak karakterli rüzgarlar hangisinde doğru verilmiştir?
+A) Karayel - Yıldız - Poyraz
+B) Samyeli - Kıble - Lodos
+C) Karayel - Kıble - Lodos
+D) Samyeli - Yıldız - Poyraz
+E) Poyraz - Kıble - SamyeliCevap: B
+Soru 29: Dağ yamacı boyunca yükselen hava kütlesinin, dağı aşarak diğer yamaçta alçalmasıyla oluşan, kurutucu ve sıcaklık artırıcı etkiye sahip Fön rüzgarları, Rize ve Artvin çevresinde hangi tarım ürününün yetiştirilmesine (mikroklima) olanak sağlar?
+A) Şeker Pancarı
+B) Muz
+C) Turunçgil
+D) Pamuk
+E) ÇayCevap: C
+Soru 30: Dünyada sadece belirli bir bölgede veya yörede yetişen, nesli koruma altındaki bitkilere "endemik bitki" denir. Buna göre, Muğla ve çevresinde yaygın olarak görülen ünlü endemik ağaç türü aşağıdakilerden hangisidir?
+A) Kazdağı Göknarı
+B) Sığla Ağacı
+C) Datça Hurması
+D) Kasnak Meşesi
+E) Anzer ÇayıCevap: B
+Soru 31: Türkiye akarsularının genel özellikleri dikkate alındığında aşağıdakilerden hangisi söylenemez?
+A) Rejimleri genellikle düzensizdir.
+B) Yatak eğimleri fazla olduğu için enerji potansiyelleri yüksektir.
+C) Bartın Çayı hariç hiçbirinde taşımacılık ve ulaşım yapılamaz.
+D) Akış hızları oldukça düşüktür.
+E) Rejimleri iklim şartlarına doğrudan bağlıdır.Cevap: D
+Soru 32: Türkiye sınırları içerisinden doğup yine Türkiye sınırları içerisinden denize dökülen en uzun akarsu aşağıdakilerden hangisidir?
+A) Fırat
+B) Dicle
+C) Kızılırmak
+D) Yeşilırmak
+E) SakaryaCevap: C
+Soru 33: Farklı iklim bölgelerinden geçerek beslenen ve havzası geniş olan akarsular "karma rejimli akarsu" olarak tanımlanır. Türkiye'de bu duruma en iyi örnek gösterilebilecek akarsular hangileridir?
+A) Kızılırmak - Yeşilırmak
+B) Fırat - Dicle
+C) Gediz - Büyük Menderes
+D) Çoruh - Aras
+E) Susurluk - SakaryaCevap: B
+Soru 34: Yer kabuğu hareketleri sonucunda meydana gelen çöküntü alanlarında suların birikmesiyle oluşan göllere "tektonik göller" denir. Aşağıdaki göllerden hangisi tamamen tektonik kökenlidir?
+A) Salda Gölü
+B) Meke Gölü
+C) Tuz Gölü
+D) Van Gölü
+E) Nemrut GölüCevap: C
+Soru 35: Kalker, jips ve kaya tuzu gibi eriyebilen kayaçların bulunduğu alanlarda meydana gelen erime çukurlarının suyla dolmasıyla oluşan "karstik göller" (Salda, Avlan, Kestel vb.) en çok hangi coğrafi alanda toplanmıştır?
+A) Doğu Karadeniz
+B) Batı Toroslar (Göller Yöresi)
+C) Güney Marmara
+D) Tuz Gölü Çevresi
+E) Kula ÇevresiCevap: B
+Soru 36: Volkanik patlamalar sonucu oluşan kaldera veya maar çukurlarında biriken suların oluşturduğu, dünyanın "nazar boncuğu" olarak bilinen maar gölü aşağıdakilerden hangisidir?
+A) Nemrut Gölü
+B) Meke Tuzlası
+C) Çıldır Gölü
+D) İznik Gölü
+E) Tortum GölüCevap: B
+Soru 37: Oluşumunda birden fazla faktörün (örneğin hem tektonizma hem de volkanik setleşme) etkili olduğu göllere "karma oluşumlu göller" denir. Türkiye'de bu sınıfa giren göller hangisinde doğru verilmiştir?
+A) Tuz ve Sapanca Gölleri
+B) Van ve Eğirdir Gölleri
+C) Salda ve Avlan Gölleri
+D) Nemrut ve Meke Gölleri
+E) Manyas ve Eber GölleriCevap: B
+Soru 38: Türkiye'deki bazı göllerden giden leğen çıkışları (göl ayakları) üzerine kurulan santraller vasıtasıyla elektrik enerjisi üretilmektedir. Aşağıdaki göllerden hangisi enerji üretimi amacıyla kullanılan göller arasında yer alır?
+A) Tuz Gölü
+B) Manyas Gölü
+C) Eğirdir Gölü
+D) Salda Gölü
+E) Akşehir GölüCevap: C
+Soru 39: Çevresi dağlarla çevrili olduğu için sularını açık denizlere ulaştıramayan havzalara "kapalı havza" denir. Türkiye'nin en büyük kapalı havza alanları hangi göllerin etrafında şekillenmiştir?
+A) Beyşehir ve Eğirdir Gölleri
+B) Sapanca ve İznik Gölleri
+C) Tuz Gölü ve Van Gölü
+D) Tortum ve Çıldır Gölleri
+E) Manyas ve Ulubat GölleriCevap: C
+Soru 40: Bir ülkede veya bölgede yaşayan toplam nüfusun, o yerin yüz ölçümüne bölünmesiyle "aritmetik nüfus yoğunluğu" elde edilir. Türkiye'de aritmetik nüfus yoğunluğunun en yüksek ve en düşük olduğu bölgeler sırasıyla hangisinde doğru verilmiştir?
+A) İç Anadolu - Karadeniz
+B) Marmara - Doğu Anadolu
+C) Ege - Güneydoğu Anadolu
+D) Akdeniz - İç Anadolu
+E) Marmara - EgeCevap: B
+Soru 41: Türkiye'de nüfus genel olarak iklim ve ulaşım kolaylığından dolayı kıyı şeridinde yoğunlaşırken, iç kesimlerde ve bazı dağlık alanlarda seyrekleşmektedir. Aşağıdaki alanların hangisinde engebenin fazla olmasına bağlı olarak nüfus seyrektir?
+A) Çatalca-Kocaeli Platosu
+B) Menteşe Yöresi ve Yıldız Dağları
+C) Çukurova Çevresi
+D) Kıyı Ege Ovaları
+E) Gaziantep PlatosuCevap: B
+Soru 42: Türkiye'de kırsal alanlarda idari olarak köye bağlı ancak köyün dışında yer alan "köy altı yerleşmeleri" kalıcı ve geçici olarak ikiye ayrılır. Aşağıdakilerden hangisi tamamen "kalıcı" köy altı yerleşmeleri arasında yer alır?
+A) Yayla, Kom, Oba
+B) Çiftlik, Mahalle, Mezra, Divan
+C) Ağıl, Oba, Kom
+D) Mezra, Yayla, Ağıl
+E) Divan, Oba, KomCevap: B
+Soru 43: Kırsal yerleşmelerde evlerin yapımında kullanılan malzemeler çevre şartlarına ve iklim özelliklerine göre değişir. Buna göre İç Anadolu, Karadeniz ve Akdeniz bölgelerinde yaygın olan mesken tipleri sırasıyla hangisinde doğru eşleştirilmiştir?
+A) Taş — Ahşap — Kerpiç
+B) Kerpiç — Ahşap — Taş
+C) Ahşap — Kerpiç — Taş
+D) Kerpiç — Taş — Ahşap
+E) Taş — Kerpiç — AhşapCevap: B
+Soru 44: Türkiye'deki iç göç hareketlerinin genel yönü ve karakteri incelendiğinde, nüfusun yer değiştirmesinde baskın olan doğrultu aşağıdakilerden hangisidir?
+A) Batıdan doğuya, kıyıdan iç kesime
+B) Kuzeyden güneye, kentten köye
+C) Doğudan batıya, iç kesimlerden kıyı kesimlerine
+D) Güneyden kuzeye, sanayi alanlarından tarım alanlarına
+E) Ovalardan dağlık bölgelereCevap: C
+Soru 45: Türkiye'de çalışan nüfusun (aktif nüfus) istihdam edildikleri ekonomik faaliyet kollarına göre dağılımında, en yüksek paydan en düşük paya doğru sıralama nasıldır?
+A) Tarım — Sanayi — Hizmet
+B) Sanayi — Hizmet — Tarım
+C) Hizmet — Sanayi — Tarım
+D) Hizmet — Tarım — Sanayi
+E) Sanayi — Tarım — HizmetCevap: C
+Soru 46: Sulama, gübreleme, kaliteli tohum ve makineleşme gibi modern yöntemlerin kullanıldığı, birim alandan alınan verimin yüksek olduğu tarım metoduna "intansif tarım" denir. Bu yöntem Türkiye'de en çok hangi bölgelerde gelişmiştir?
+A) Doğu Anadolu - Karadeniz
+B) İç Anadolu - Güneydoğu Anadolu
+C) Marmara - Ege
+D) Doğu Karadeniz - Teke Yöresi
+E) Hakkari Çevresi - ErzurumCevap: C
+Soru 47: Doğal koşullara ve yağışa bağımlılığın yüksek olduğu, insan gücüne dayalı ve verimin düşük olduğu geleneksel tarım metoduna ne ad verilir?
+A) İntansif Tarım
+B) Ekstansif Tarım
+C) Hidroponik Tarım
+D) Plantasyon Tarımı
+E) SeracılıkCevap: B
+Soru 48: Kurak ve yarı kurak bölgelerde toprağın nemini kazanması amacıyla bir yıl ekilip bir yıl boş bırakılmasına "nadas" denir. Nadas alanlarının en fazla olduğu bölge ile nadasın en önemli modern alternatifi aşağıdakilerin hangisinde verilmiştir?
+A) Karadeniz — Monokültür tarım
+B) İç Anadolu — Nöbetleşe ekim
+C) Akdeniz — Seracılık
+D) Ege — Plantasyon
+E) Doğu Anadolu — Mera hayvancılığıCevap: B
+Soru 49: Cumhuriyet dönemi tarım politikaları ve sanayileşme adımları çerçevesinde Türkiye'de ilk kez ekimi yapılan ve fabrikaları kurulan tarım ürünleri aşağıdakilerden hangisidir?
+A) Buğday ve Arpa
+B) Tütün ve Pamuk
+C) Çay ve Şeker Pancarı
+D) Zeytin ve İncir
+E) Fındık ve ÜzümCevap: C
+Soru 50: Türkiye'de bazı tarım ürünlerinin üretim miktarında birinci sırada yer alan illerimiz bulunmaktadır. Aşağıdaki tarım ürünü ve en çok üretildiği il eşleştirmelerinden hangisi yanlıştır?
+A) Fındık - Ordu
+B) Çay - Rize
+C) İncir - Aydın
+D) Kayısı - Malatya
+E) Üzüm - AntalyaCevap: E
+Soru 51: Türkiye'de devlet, bazı tarım ürünlerinin ekim alanlarını belirli gerekçelerle kontrol altında tutmaktadır. Aşağıdaki ürünlerden hangisi karşısında verilen gerekçeyle devlet kontrolünde değildir?
+A) Pirinç (Sıtma hastalığını önlemek)
+B) Haşhaş (Uyuşturucu yapımını engellemek)
+C) Kenevir (Uyuşturucu yapımını engellemek)
+D) Tütün (Kaliteyi korumak)
+E) Buğday (Kuraklığı önlemek)Cevap: E
+Soru 52: Güneydoğu Anadolu Projesi'nin (GAP) hayata geçirilmesi ve sulama imkanlarının artmasıyla birlikte, bölgede üretim patlaması yaşayarak Türkiye birinciliğine yerleşen tarım ürünü hangisidir?
+A) Şeker Pancarı
+B) Tütün
+C) Pamuk
+D) Çay
+E) FındıkCevap: C
+Soru 53: Doğal bitki örtüsünün bozkır (step) olduğu İç Anadolu Bölgesi'nde en yaygın olarak yapılan hayvancılık türü aşağıdakilerden hangisidir?
+A) Büyükbaş (Mera) Hayvancılığı
+B) Küçükbaş Hayvancılık (Koyun)
+C) İpek Böcekçiliği
+D) Kümes Hayvancılığı
+E) ArıcılıkCevap: B
+Soru 54: Yünü son derece değerli olan ve Türkiye'de özellikle Ankara ve çevresinde yetiştiriciliğiyle ün kazanmış küçükbaş hayvan türü aşağıdakilerden hangisidir?
+A) Kıl Keçisi
+B) Tiftik Keçisi
+C) Karaman Koyunu
+D) Merinos Koyunu
+E) DağlıçCevap: B
+Soru 55: Yaz yağışlarının gür çayırlar oluşturduğu Doğu Anadolu'da "Mera hayvancılığı", büyük tüketim merkezlerinin (büyükşehirlerin) yakınlarında ise "Besi hayvancılığı" şeklinde gelişen hayvancılık türü hangisidir?
+A) Küçükbaş Hayvancılık
+B) Kümes Hayvancılığı
+C) Büyükbaş Hayvancılık
+D) Arıcılık
+E) İpek BöcekçiliğiCevap: C
+Soru 56: Türkiye coğrafi çeşitliliği sayesinde arıcılıkta önemli bir yere sahiptir. Özellikle çam balı üretimiyle bilinen Muğla'nın yanı sıra arıcılığın çok geliştiği diğer illerimiz hangileridir?
+A) Şanlıurfa - Mardin - Gaziantep
+B) Edirne - Tekirdağ - Kırklareli
+C) Ordu - Erzurum-Kars - Hakkari
+D) Konya - Aksaray - Karaman
+E) İzmir - Aydın - ManisaCevap: C
+Soru 57: Türkiye'deki demir madeni yatakları göz önüne alındığında, en önemli çıkarım alanları olan Sivas-Divriği ve Malatya-Hekimhan hangi sanayi kolunun temel ham maddesini sağlar?
+A) Kimya Sanayii
+B) Demir-Çelik Sanayii
+C) Çimento Sanayii
+D) Alüminyum Sanayii
+E) Otomotiv SanayiiCevap: B
+Soru 58: Elektrik-elektronik sanayiinin vazgeçilmez madeni olan bakır, Türkiye'de hangi merkezlerde yoğun olarak çıkarılmaktadır?
+A) Artvin (Murgul) - Kastamonu (Küre) - Elazığ (Maden)
+B) Sivas (Divriği) - Malatya (Hekimhan)
+C) Eskişehir - Kütahya - Balıkesir
+D) Konya (Seydişehir) - Antalya (Akseki)
+E) Mardin (Mazıdağı)Cevap: A
+Soru 59: Türkiye'nin dünya toplam rezervlerinde birinci sırada yer aldığı, Eskişehir, Kütahya ve Balıkesir çevresinde yatakları bulunan jet yakıtından cama kadar geniş kullanım alanı olan maden hangisidir?
+A) Boksit
+B) Demir
+C) Bor
+D) Fosfat
+E) LinyitCevap: C
+Soru 60: Alüminyumun ham maddesi olan ve Konya (Seydişehir) ile Antalya (Akseki) çevresinde yatakları bulunan maden aşağıdakilerden hangisidir?
+A) Bor
+B) Bakır
+C) Boksit
+D) Krom
+E) ManganezCevap: C
+Soru 61: Yapay gübre imalatında kullanılan ve Türkiye'de yalnızca Mardin-Mazıdağı çevresinde çıkarılan maden aşağıdakilerden hangisidir?
+A) Fosfat
+B) Kükürt
+C) Barit
+D) Asbest
+E) LinyitCevap: A
+Soru 62: Türkiye'nin hemen her bölgesinde yatakları bulunan, elektrik üretiminde termik santrallerde yaygın olarak kullanılan ve en büyük rezervi Kahramanmaraş-Elbistan'da olan enerji kaynağı hangisidir?
+A) Taş Kömürü
+B) Linyit
+C) Petrol
+D) Doğal Gaz
+E) UranyumCevap: B
+Soru 63: Türkiye'de yalnızca Zonguldak ve çevresinde çıkarılan, kalori değeri çok yüksek olduğu için demir-çelik sanayiinde eritici olarak kullanılan I. Zaman (Paleozoik) arazi kalıntısı olan kömür türü hangisidir?
+A) Linyit
+B) Taş Kömürü
+C) Antrasit
+D) Turba
+E) Odun KömürüCevap: B
+Soru 64: Türkiye'de Kırklareli (Hamitabat) ve Çamurlu gibi alanlarda çıkarılan, son yıllarda Karadeniz'de bulunan rezervleri ile stratejik önemi daha da artan fosil enerji kaynağı hangisidir?
+A) Linyit
+B) Petrol
+C) Doğal Gaz
+D) Jeotermal
+E) Nükleer EnerjiCevap: C
+Soru 65: Yer altındaki sıcak su ve su buharından elde edilen, Türkiye'de ilk olarak Denizli (Sarayköy) ve Aydın (Germencik)'da santralleri kurulan yenilenebilir enerji kaynağı hangisidir?
+A) Güneş Enerjisi
+B) Rüzgar Enerjisi
+C) Jeotermal Enerji
+D) Biyokütle Enerjisi
+E) Hidroelektrik EnerjiCevap: C
+Soru 66: Coğrafi şartlar göz önüne alındığında, güneşlenme süresinin uzunluğuna bağlı olarak güneş enerjisi potansiyeli en fazla olan ve en az olan bölgeler hangisinde doğru sırayla verilmiştir?
+A) En fazla Karadeniz - En az Akdeniz
+B) En fazla Güneydoğu Anadolu - En az Karadeniz
+C) En fazla Marmara - En az Doğu Anadolu
+D) En fazla Ege - En az İç Anadolu
+E) En fazla İç Anadolu - En az Doğu AnadoluCevap: B
+Soru 67: Türkiye'de rüzgar gücünden elektrik üretmek amacıyla kurulan ilk rüzgar enerjisi santrali (RES) aşağıdaki il ve merkezlerin hangisinde faaliyete geçmiştir?
+A) Çanakkale
+B) Balıkesir
+C) İzmir (Alaçatı)
+D) Hatay
+E) ManisaCevap: C
+Soru 68: Türkiye'de sanayi tesislerinin dağılışı incelendiğinde, fabrikaların büyük oranda Marmara ve Ege Bölgelerinde yoğunlaşmasının temel coğrafi gerekçeleri nelerdir?
+A) Ham madde bolluğu ve yer şekillerinin düzlüğü
+B) Ulaşım kolaylığı ve pazarlama/tüketim nüfusunun fazlalığı
+C) İş gücü maliyetlerinin düşüklüğü ve iklimin sıcaklığı
+D) Yer altı sularının zenginliği ve maden çeşitliliği
+E) Turizm faaliyetlerinin yaygın olmasıCevap: B
+Soru 69: Şeker fabrikalarının Türkiye'deki dağılışında "ham maddeye yakınlık" zorunluluğundan dolayı fabrikalar tarım alanlarının hemen yanına kurulur. Bu ürünün işlenme özelliğinden dolayı fabrikalar hangi alanlarda tercih edilmez?
+A) İç Anadolu Platolarında
+B) Kıyı kesimlerinde (ekonomik getirisi yüksek ürünler seçildiği için)
+C) Doğu Anadolu Ovalarında
+D) Güneydoğu Anadolu ovalarında
+E) İç Batı Anadolu'daCevap: B
+Soru 70: Karabük ve Ereğli'de demir-çelik fabrikalarının kurulmasında "enerji kaynağına yakınlık" (taş kömürü) etkili iken, İskenderun Demir-Çelik Fabrikası'nın kuruluş yerinin belirlenmesindeki temel faktör hangisidir?
+A) Ham maddeye yakınlık
+B) Su kaynaklarının bolluğu
+C) Ulaşım ve Liman kolaylığı
+D) İş gücü potansiyeli
+E) İklim şartlarıCevap: C
+Soru 71: Türkiye'deki petrol rafinerilerinden Batman Rafinerisi "ham maddeye yakınlık" ilkesine göre kurulmuştur. İzmit (İpraş), İzmir (Aliağa), Kırıkkale (Orta Anadolu) ve Mersin (Ataş) rafinerilerinin kurulmasında rol oynayan baskın faktör nedir?
+A) Yer altı sularının bolluğu
+B) Deprem riskinin azlığı
+C) Ulaşım ve Pazarlama imkanları
+D) Ucuz arsa temini
+E) İklimin elverişliliğiCevap: C
+Soru 72: Kağıt fabrikalarının kuruluş yerleri seçilirken yüksek miktarda su ve odunsu ham madde ihtiyacı gözetilir. Bu durum Türkiye'deki kağıt fabrikalarının harita üzerinde genellikle nerede toplanmasına yol açmıştır?
+A) İç Anadolu'nun kurak düzlüklerinde
+B) Kıyı bölgelerinde ve ormanlık alanlara yakın yerlerde
+C) Güneydoğu Anadolu'nun step alanlarında
+D) Doğu Anadolu'nun yüksek platolarında
+E) Tektonik göllerin etrafındaCevap: B
+Soru 73: Türkiye'nin demiryolu ağı haritası incelendiğinde, yer şekillerinin engebeli olmasından ötürü aşağıdaki alanların/şehirlerin hangisinde demiryolu ulaşımı bulunmamaktadır?
+A) Ankara - Eskişehir
+B) Adana - Mersin
+C) Doğu Karadeniz - Çanakkale - Antalya - Muğla
+D) İzmir - Manisa
+E) Sivas - SamsunCevap: C
+Soru 74: Bir limanın arkasındaki kara parçasıyla olan ulaşım bağının gelişmişliğini ve limanın beslenme gücünü ifade eden kavrama "hinterlant" denir. Türkiye'de hinterlandı en geniş olan limanlar hangileridir?
+A) Sinop ve Trabzon Limanları
+B) Antalya ve Rize Limanları
+C) İzmir ve İstanbul Limanları
+D) Giresun ve Ordu Limanları
+E) Zonguldak ve İskenderun LimanlarıCevap: C
+Soru 75: Ticari araçların, kamyonların veya tırların tekerlekli yükleriyle birlikte gemilere bindirilerek deniz yoluyla taşınmasını ifade eden ve Türkiye'nin ihracatında büyük öneme sahip olan taşımacılık türü hangisidir?
+A) Ro-Ro Taşımacılığı
+B) Boru Hattı Taşımacılığı
+C) Kabotaj Taşımacılığı
+D) Kombine Taşımacılık
+E) Demir İpekyolu TaşımacılığıCevap: A
+Soru 76: Türkiye'de bulunan Göbeklitepe, Efes Antik Kenti, Safranbolu Evleri, Hattuşa ve Divriği Ulu Camii gibi uluslararası öneme sahip değerler hangi küresel kuruluşun Dünya Miras Listesi'nde yer almaktadır?
+A) UNICEF
+B) UNESCO
+C) WHO
+D) NATO
+E) IMFCevap: B
+Soru 77: Koy ve körfez çeşitliliğinin fazla, deniz turizm sezonunun uzun olduğu Ege ve Akdeniz kıyılarında (Muğla, Antalya vb.) yaygın olarak yapılan turizm türü aşağıdakilerden hangisidir?
+A) Kış Turizmi
+B) Yayla Turizmi
+C) Yat Turizmi
+D) Kongre Turizmi
+E) Termal TurizmCevap: C
+Soru 78: Türkiye'de yükseltisi fazla ve kar yağışlı gün sayısının yüksek olduğu dağlarda kış turizmi gelişmiştir. Aşağıdakilerden hangisi Türkiye'nin önemli kış turizm merkezleri (kayak merkezleri) arasında yer alır?
+A) Uludağ, Erciyes, Palandöken, Sarıkamış, Kartalkaya
+B) Kaçkar Dağları, Aydın Dağları, Yıldız Dağları
+C) Menteşe Dağları, Canik Dağları, Küre Dağları
+D) Nur Dağları, Karacadağ, Madra Dağı
+E) Kazdağları, Samanlı Dağları, Aydın DağlarıCevap: A
+Soru 79: Selçuk (Meryem Ana Evi), Şanlıurfa (Balıklıgöl), Konya (Mevlana Türbesi) ve Antakya gibi farklı dinlere ait merkezlerin ziyaret edilmesiyle gelişen turizm dalı hangisidir?
+A) Sağlık Turizmi
+B) İnanç Turizmi
+C) Eko-Turizm
+D) Gastronomi Turizmi
+E) Kültür TurizmiCevap: B
+Soru 80: Geçmişte yalnızca hayvancılık amaçlı kullanılan ancak son yıllarda özellikle Karadeniz Bölgesi'nde turizm ve doğa sporları amacıyla büyük önem kazanan rekreasyon faaliyeti hangisidir?
+A) Sanayi Turizmi
+B) Yaylacılık (Yayla Turizmi)
+C) Mağara Turizmi
+D) Av Turizmi
+E) Deniz TurizmiCevap: B
+Soru 81: Küreselleşmenin getirdiği tek tipleşmeye karşı duran, yerel kültürü, mimariyi ve sakin yaşamı destekleyen şehirlere "Cittaslow" (Sakin Şehir) denir. Türkiye'nin ilan edilen ilk sakin şehri aşağıdakilerden hangisidir?
+A) Şanlıurfa - Halfeti
+B) Muğla - Akyaka
+C) İzmir - Seferihisar
+D) Bolu - Göynük
+E) Isparta - YalvaçCevap: C
+Soru 82: Türkiye'de bölgesel kalkınmayı sağlamak amacıyla hazırlanan Doğu Anadolu Projesi'nin (DAP) öncelikli temel hedefi hangi sektörleri geliştirmektir?
+A) Sanayi ve Madencilik
+B) Tarım ve Hayvancılık
+C) Turizm ve Ticaret
+D) Ulaşım ve Haberleşme
+E) Ormancılık ve Kağıt SanayiiCevap: B
+Soru 83: Zonguldak, Bartın ve Karabük illerini kapsayan bölgesel kalkınma projesinin (ZBK) temel çıkış noktası ve amacı aşağıdakilerden hangisidir?
+A) Tarımda sulama imkanlarını artırmak
+B) Sanayi ve madencilik (kömür/demir-çelik) faaliyetlerini modernize etmek
+C) Yayla turizmini canlandırmak
+D) Yeni delta ovaları açmak
+E) Orman yangınlarını önlemekCevap: B
+Soru 84: Yeşilırmak Havzası Gelişim Projesi (YHGP) kapsamında nehir havzasında yapılması planlanan çalışmaların ana odağı aşağıdakilerden hangisidir?
+A) Deniz turizmini başlatmak
+B) Akış rejimini düzenlemek, taşkınları ve çevre kirliliğini önlemek
+C) Bölgeyi tamamen sanayi kenti yapmak
+D) Nükleer santral inşa etmek
+E) Küçükbaş hayvancılığı bitirmekCevap: B
+Soru 85: Türkiye'nin fiziki haritası incelendiğinde, 5137 metrelik yükseltisiyle ülkemizin en yüksek zirvesini oluşturan dağ hangisidir?
+A) Erciyes Dağı
+B) Süphan Dağı
+C) Ağrı Dağı
+D) Kaçkar Dağı
+E) UludağCevap: C
+Soru 86: Ege Denizi'nde yer alan ve Türkiye'nin yüz ölçümü bakımından en büyük adası olma unvanına sahip olan adamız hangisidir?
+A) Bozcaada
+B) Gökçeada
+C) Cunda Adası
+D) Marmara Adası
+E) BüyükadaCevap: B
+Soru 87: Akarsuların taşıdığı alüvyonların deniz kıyısında birikmesiyle oluşan ovalara delta ovası denir. Türkiye'nin en büyük ovası olan delta oluşumu hangisidir?
+A) Bafra Ovası
+B) Çarşamba Ovası
+C) Çukurova
+D) Menemen Ovası
+E) Silifke OvasıCevap: C
+Soru 88: Fırat Nehri üzerinde kurulu olan, gövde hacmi ve elektrik üretim kapasitesi bakımından Türkiye'nin en büyük barajı aşağıdakilerden hangisidir?
+A) Keban Barajı
+B) Karakaya Barajı
+C) Atatürk Barajı
+D) Ilısu Barajı
+E) Deriner BarajıCevap: C
+Soru 89: Doğu Anadolu Bölgesi'nde yer alan, oluşumu yönüyle karma yapılı olan ve Türkiye'nin en derin gölü olma özelliğini taşıyan göl hangisidir?
+A) Tuz Gölü
+B) Beyşehir Gölü
+C) Van Gölü
+D) Eğirdir Gölü
+E) Çıldır GölüCevap: C
+Soru 90: Rize ile Erzurum arasındaki karayolu ulaşımını kesintisiz sağlamak amacıyla inşa edilen, Türkiye'nin en uzun çift tüplü karayolu tünellerinden biri olan tünel hangisidir?
+A) Zigana Tüneli
+B) Ovit Tüneli
+C) Sabuncubeli Tüneli
+D) Ilgaz Tüneli
+E) Avrasya TüneliCevap: B
+Soru 91: Türkiye'de yıllık ortalama yağış miktarı dikkate alındığında, her mevsim yağışlı iklimin etkisiyle en fazla yağış alan yer (il) hangisidir?
+A) Rize
+B) Trabzon
+C) Antalya
+D) Muğla
+E) ZonguldakCevap: A
+Soru 92: Etrafı dağlarla çevrili birer çukur (mikroklima/oluk) özelliği göstermelerinden ötürü Türkiye'nin en az yağış alan yerleri nerelerdir?
+A) Teke ve Taşeli Platoları
+B) Iğdır ve Tuz Gölü Çevresi
+C) Doğu Karadeniz Kıyıları
+D) Yıldız Dağları Bölümü
+E) Hakkari YöresiCevap: B
+Soru 93: Yükseltinin fazla olması ve şiddetli karasallık nedeniyle Türkiye'nin kış mevsiminde en soğuk olan illeri hangileridir?
+A) Sivas - Yozgat
+B) Ankara - Eskişehir
+C) Ardahan - Erzurum
+D) Bolu - Kastamonu
+E) Muş - BingölCevap: C
+Soru 94: Enlemin etkisi ve Akdeniz iklim şartları nedeniyle Türkiye'nin yıllık ortalama sıcaklığı en yüksek olan illeri hangileridir?
+A) İzmir - Aydın
+B) Şanlıurfa - Mardin
+C) Hatay - Mersin
+D) Antalya - Muğla
+E) Adana - GaziantepCevap: C
+Soru 95: Yağış miktarının ve nemliliğin yüksek olmasının bir sonucu olarak Türkiye'de orman varlığının en fazla yoğunlaştığı coğrafi bölge hangisidir?
+A) Akdeniz Bölgesi
+B) Ege Bölgesi
+C) Karadeniz Bölgesi
+D) Marmara Bölgesi
+E) Doğu Anadolu BölgesiCevap: C
+Soru 96: Kuraklığın şiddetli olması ve ağaç yetişme şartlarının zorluğundan dolayı Türkiye'de orman oranının en az olduğu coğrafi bölge hangisidir?
+A) İç Anadolu Bölgesi
+B) Güneydoğu Anadolu Bölgesi
+C) Doğu Anadolu Bölgesi
+D) Marmara Bölgesi (Ergene Yöresi)
+E) Ege BölgesiCevap: B
+Soru 97: Türkiye'nin dış ticaret verileri (ihracat) incelendiğinde, en çok ürün sattığımız ve en büyük ihracat ortağımız olan ülke aşağıdakilerden hangisidir?
+A) Rusya
+B) Çin
+C) Almanya
+D) ABD
+E) İtalyaCevap: C
+Soru 98: Türkiye'nin dış alım (ithalat) verileri göz önüne alındığında, en çok harcama yaptığımız ve en büyük ithalat ortaklarımız olan ülkeler hangisinde doğru verilmiştir?
+A) Almanya ve Fransa
+B) Çin ve Rusya
+C) ABD ve İngiltere
+D) İtalya ve İran
+E) Irak ve SuriyeCevap: B
+Soru 99: Türkiye'nin toplam ihracat gelirleri içerisinde sektör bazında en fazla ihraç ettiğimiz ve gelir sağladığımız lider ürün/sektör grubu hangisidir?
+A) Tarım ve Hayvancılık
+B) Tekstil ve Konfeksiyon
+C) Otomotiv
+D) Demir-Çelik Ürünleri
+E) MadencilikCevap: C
+Soru 100: Türkiye'nin dış ticaret açığı vermesindeki en büyük paya sahip olan ve ülke olarak en fazla ithal ettiğimiz (dışarıdan aldığımız) ürün grubu hangisidir?
+A) Elektronik Eşya
+B) Enerji (Petrol / Doğal Gaz)
+C) Ağır Sanayi Makineleri
+D) İlaç ve Kimyasal Ürünler
+E) Tropikal Tarım ÜrünleriCevap: B`;
+
+const RAW_GEO_HAP_BILGI = `
+1. Matematik Konum: Türkiye 36°-42° Kuzey paralelleri ile 26°-45° Doğu meridyenleri arasındadır.
+2. Güneş Işınları: Türkiye’ye hiçbir zaman 90° (dik) açıyla gelmez; bu yüzden gölge boyu asla sıfır olmaz.
+3. Bakı Etkisi: Dağların güney yamaçları daha sıcaktır (Karadeniz’deki istisna hariç).
+4. Çizgisel Hız: En fazla Hatay’da, en az Sinop’tadır.
+5. Yerel Saat: En ileri il Iğdır’dır. Türkiye yıl boyu +3. saat dilimini (Iğdır) kullanır.
+6. En Uzun Gündüz: 21 Haziran’da kuzeye (Sinop) gidildikçe gündüz süresi uzar.
+7. En Uzun Gece: 21 Aralık’ta kuzeye gidildikçe gece süresi uzar.
+8. Ekinoks (21 Mart - 23 Eylül): Dünyanın her yerinde gece-gündüz eşittir.
+9. Jeopolitik Konum: Boğazlar, enerji koridoru olma ve üç kıtanın kesişim noktasında bulunma özellikleridir.
+10. Sınır Kapıları: En işlek ve sınavlarda en çok çıkan Habur (Irak) ve Gürbulak'tır (İran). En eski sınırımız İran sınırıdır.
+11. Genel Görünüm: Türkiye genç, yüksek ve engebeli bir ülkedir (Ortalama yükselti: 1132 m).
+12. Dağların Uzanışı: Dağlar genellikle doğu-batı yönlü uzanır; bu yüzden ulaşım iç kesimlere zordur.
+13. Ege Bölgesi: Dağlar denize dik uzanır; kıyı girintili çıkıntılıdır, kıta sahanlığı geniştir.
+14. Karadeniz ve Akdeniz: Dağlar denize paralel uzanır; boyuna kıyı tipi görülür, falez (yalıyar) yaygındır.
+15. Delta Ovaları: En büyüğü Çukurova'dır. Diğerleri: Bafra, Çarşamba, Silifke, Menemen, Selçuk.
+16. Karstik Şekiller: En çok Teke ve Taşeli platolarında (Akdeniz) görülür.
+17. Volkanik Dağlar: En genci Manisa-Kula volkanlarıdır. En yükseği Ağrı Dağı'dır.
+18. Depremsellik: Türkiye'de üç ana fay hattı vardır: KAF, DAF ve BAF.
+19. Platolar: En çok İç Anadolu'dadır. En yüksek ve volkanik olanı Erzurum-Kars platosudur.
+20. Kıyı Tipleri: Türkiye'de Haliçli ve Skyer kıyı tipi görülmez (Okyanusa kıyımız yok).
+21. Akdeniz İklimi: Yazlar sıcak ve kurak, kışlar ılık ve yağışlıdır. Karakteristik bitkisi Maki'dir.
+22. Karadeniz İklimi: Her mevsim yağışlıdır. En çok yağışı sonbaharda alır. Bitki örtüsü ormandır.
+23. Step (Bozkır) İklimi: En yaygın iklimdir. En çok yağış ilkbaharda düşer. Bitki örtüsü Antropojen Bozkır'dır.
+24. Sert Karasal: Erzurum-Kars çevresi. En çok yağış yazın düşer. Bitki örtüsü çayırdır.
+25. Donlu Gün Sayısı: En çok Doğu Anadolu'da, en az Akdeniz kıyılarındadır.
+26. Bağıl Nem: En yüksek Karadeniz'dedir (Yağış ihtimali yüksek).
+27. Maksimum Nem: En yüksek yazın Güneydoğu Anadolu'dadır (Sıcaklık yüksek).
+28. Rüzgarlar (Kodlama: KAYIP SAKAL): Karayel, Yıldız, Poyraz (Soğuk); Samyeli, Kıble, Lodos (Sıcak).
+29. Fön Rüzgarı: Rize ve Artvin çevresinde turunçgil tarımına (mikroklima) olanak sağlar.
+30. Endemik Bitkiler: Sadece belirli bir bölgede yetişen bitkilerdir (Örn: Sığla ağacı - Muğla).
+31. Akarsular: Rejimleri genellikle düzensizdir, enerji potansiyelleri yüksektir, ulaşım yapılamaz (Bartın Çayı hariç).
+32. En Uzun Akarsu: Sınırlarımız içindeki en uzunu Kızılırmak'tır.
+33. Karma Rejimli: En iyi örnek Fırat ve Dicle'dir.
+34. Tektonik Göller: Tuz, Sapanca, İznik, Manyas, Eber, Akşehir.
+35. Karstik Göller: Salda, Avlan, Kestel (Batı Toroslar).
+36. Volkanik Göller: Nemrut (Kaldera), Meke Tuzlası (Maar - Dünyanın nazar boncuğu).
+37. Karma Oluşumlu: Van ve Eğirdir gölleri.
+38. Enerji Üretilen Göller: Eğirdir, Kovada, Tortum, Çıldır ve Hazar.
+39. Kapalı Havza: Tuz Gölü ve Van Gölü havzaları sularını denize ulaştıramaz.
+40. Aritmetik Nüfus Yoğunluğu: En yüksek Marmara, en düşük Doğu Anadolu'dur.
+41. Nüfusun Dağılışı: Kıyılarda yoğun, iç kesimlerde ve dağlık alanlarda (Menteşe, Yıldız Dağları) seyrektir.
+42. Köy Altı Yerleşmeleri: Kalıcı: Çiftlik, Mahalle, Mezra, Divan. Geçici: Yayla, Kom, Oba, Ağıl.
+43. Mesken Tipleri: İç Anadolu'da kerpiç, Karadeniz'de ahşap, Akdeniz'de taş evler yaygındır.
+44. Göçler: Genellikle doğudan batıya, iç kesimden kıyıya doğrudur.
+45. Aktif Nüfus: En çok Hizmet, sonra Sanayi ve Tarım sektöründedir.
+46. İntansif (Modern) Tarım: Marmara ve Ege'de yaygındır; verim yüksektir.
+47. Ekstansif (Geleneksel) Tarım: Doğada yağışa bağlıdır, verim düşüktür.
+48. Nadas: Toprağın bir yıl boş bırakılmasıdır. En çok İç Anadolu'da görülür. Alternatifi Nöbetleşe Ekim'dir.
+49. Cumhuriyet Dönemi: Tarımda makineleşme artmış, çay ve şeker pancarı gibi ürünler ilk kez ekilmiştir.
+50. Üretimde Birinci Olanlar: Fındık (Ordu), Çay (Rize), İncir (Aydın), Kayısı (Malatya), Üzüm (Manisa).
+51. Devlet Kontrolündeki Ürünler: Pirinç (Sıtma), Haşhaş ve Kenevir (Uyuşturucu), Tütün (Kalite), Şeker Pancarı (Kota).
+52. GAP Projesi: Güneydoğu'da Pamuk üretimini birinciliğe taşımıştır.
+53. Küçükbaş Hayvancılık: Bozkırların olduğu İç Anadolu'da yaygındır (Koyun).
+54. Tiftik Keçisi: Ankara çevresinde meşhurdur.
+55. Büyükbaş Hayvancılık: Yaz yağışlarının olduğu Doğu Anadolu'da (Mera) ve büyükşehir çevresinde (Besi) yaygındır.
+56. Arıcılık: Muğla (Çam balı), Ordu, Erzurum-Kars ve Hakkari'de yaygındır.
+57. Demir: Sivas (Divriği) ve Malatya (Hekimhan).
+58. Bakır: Artvin (Murgul), Kastamonu (Küre), Elazığ (Maden).
+59. Bor: Eskişehir, Kütahya, Balıkesir. (Türkiye dünya rezerv birincisidir).
+60. Boksit (Alüminyum): Konya (Seydişehir) ve Antalya (Akseki).
+61. Fosfat: Mardin (Mazıdağı). (Gübre yapımı).
+62. Linyit: Her bölgede bulunur; en büyük yatak Elbistan'dadır.
+63. Taş Kömürü: Sadece Zonguldak ve çevresindedir (I. Zaman arazisi).
+64. Doğal Gaz: Kırklareli (Hamitabat) ve Akçakoca. Karadeniz'deki rezervler stratejiktir.
+65. Jeotermal: Denizli (Sarayköy) ve Aydın (Germencik).
+66. Güneş Enerjisi: En fazla potansiyel Güneydoğu ve İç Anadolu'dadır; en az Karadeniz'dedir.
+67. Rüzgar Enerjisi: İlk santral İzmir (Alaçatı)'da kurulmuştur.
+68. Sanayinin Dağılışı: Ulaşım ve pazarlama kolaylığı nedeniyle Marmara ve Ege'de yoğundur.
+69. Şeker Fabrikaları: Ham maddeye yakınlık zorunludur; kıyılarda çok tercih edilmez.
+70. Demir-Çelik: Karabük ve Ereğli (Enerji kaynağına yakınlık); İskenderun (Ulaşım).
+71. Petrol Rafinerileri: Batman (Hammadde); İzmit, İzmir, Kırıkkale, Mersin (Ulaşım/Pazarlama).
+72. Kağıt Fabrikaları: Su ve hammadde ihtiyacı nedeniyle kıyı bölgelerindedir.
+73. Demiryolu: Doğu Karadeniz, Çanakkale, Antalya ve Muğla'da demiryolu ulaşımı yoktur.
+74. Hinterlant: Limanın art bölgesiyle olan ulaşım gücüdür. İzmir ve İstanbul'un hinterlandı çok geniştir.
+75. Ro-Ro Taşımacılığı: Kamyonların gemilerle taşınmasıdır; ihracatta önemlidir.
+76. UNESCO Mirasları: Göbeklitepe, Efes, Safranbolu, Hattuşa, Divriği Ulu Camii vb.
+77. Yat Turizmi: Ege ve Akdeniz kıyılarında (Muğla, Antalya) yaygındır.
+78. Kış Turizmi: Uludağ, Erciyes, Palandöken, Sarıkamış, Kartalkaya.
+79. İnanç Turizmi: Selçuk (Meryem Ana), Şanlıurfa (Balıklıgöl), Konya (Mevlana), Antakya.
+80. Yaylacılık: Son yıllarda turizm amaçlı (Karadeniz) önem kazanmıştır.
+81. Sakin Şehirler (Cittaslow): İlk Sakin Şehir İzmir-Seferihisar'dır.
+82. Doğu Anadolu Projesi (DAP): Tarım ve hayvancılığı geliştirmeyi hedefler.
+83. Zonguldak-Bartın-Karabük (ZBK): Sanayi ve madenciliği modernize etmeyi amaçlar.
+84. Yeşilırmak Havzası Gelişim Projesi (YHGP): Akış rejimini düzenleme ve kirliliği önlemeyi hedefler.
+85. En Yüksek Dağ: Ağrı Dağı.
+86. En Büyük Ada: Gökçeada.
+87. En Büyük Delta: Çukurova.
+88. En Büyük Baraj: Atatürk Barajı.
+89. En Derin Göl: Van Gölü.
+90. En Uzun Tünel: Ovit Tüneli (Rize-Erzurum).
+91. En Fazla Yağış Alan Yer: Rize.
+92. En Az Yağış Alan Yer: Iğdır ve Tuz Gölü çevresi.
+93. En Soğuk İl: Ardahan/Erzurum.
+94. En Sıcak İl (Yıllık ortalama): Hatay/Mersin.
+95. En Fazla Orman: Karadeniz Bölgesi.
+96. En Az Orman: Güneydoğu Anadolu Bölgesi.
+97. En Büyük İhracat Ortağımız: Almanya.
+98. En Büyük İthalat Ortağımız: Çin ve Rusya.
+99. En Fazla İhraç Ettiğimiz Ürün: Otomotiv.
+100. En Fazla İthal Ettiğimiz Ürün: Enerji (Petrol/Doğalgaz).
+`;
+
+        const parseHistoryData = () => {
+            return RAW_HISTORY_DATA.split('\n')
+                .filter(line => line.trim().length > 0)
+                .map((line, index) => {
+                    const cleanLine = line.replace(/\*\*/g, '');
+                    const firstColon = cleanLine.indexOf(':');
+                    const firstDot = cleanLine.indexOf('.');
+                    const topic = cleanLine.substring(firstDot + 1, firstColon).trim();
+                    const detail = cleanLine.substring(firstColon + 1).trim();
+                    return { id: index, topic, detail };
+                });
+        };
+
+        const parseGeoHapData = (data) => {
+            const map = {};
+            const lines = data.split('\n');
+            lines.forEach(line => {
+                const match = line.match(/^(\d+)\.\s*(.*)/);
+                if (match) {
+                    const num = parseInt(match[1], 10);
+                    map[num - 1] = match[2].replace(/\*\*/g, '').trim();
+                }
+            });
+            return map;
+        };
+
+        const parseGeoData = (geoData, hapDataText) => {
+            const hapMap = parseGeoHapData(hapDataText);
+            const result = [];
+            const blocks = geoData.split(/Soru \d+:/).filter(b => b.trim().length > 0);
+
+            blocks.forEach((block, idx) => {
+                try {
+                    const idxA = block.indexOf('A)');
+                    const idxB = block.indexOf('B)');
+                    const idxC = block.indexOf('C)');
+                    const idxD = block.indexOf('D)');
+                    const idxE = block.indexOf('E)');
+                    const idxAns = block.lastIndexOf('Cevap:');
+
+                    if (idxA > -1 && idxB > -1 && idxC > -1 && idxD > -1 && idxE > -1 && idxAns > -1) {
+                        const qText = block.substring(0, idxA).trim();
+                        let optA = block.substring(idxA + 2, idxB).trim();
+                        let optB = block.substring(idxB + 2, idxC).trim();
+                        let optC = block.substring(idxC + 2, idxD).trim();
+                        let optD = block.substring(idxD + 2, idxE).trim();
+                        let optE = block.substring(idxE + 2, idxAns).trim();
+                        
+                        if (optC.startsWith(') ')) optC = optC.substring(2).trim();
+
+                        const ans = block.substring(idxAns + 6).trim()[0];
+                        const options = [optA, optB, optC, optD, optE];
+                        const answerIndex = ['A', 'B', 'C', 'D', 'E'].indexOf(ans);
+                        const hapBilgiText = hapMap[idx] ? hapMap[idx] : `Doğru Cevap: ${ans}) ${options[answerIndex]}`;
+
+                        result.push({
+                            id: idx,
+                            questionText: qText,
+                            options,
+                            correctAnswer: answerIndex,
+                            explanation: hapBilgiText
+                        });
+                    }
+                } catch (e) {
+                    console.warn('Hatalı coğrafya bloğu atlandı:', idx);
+                }
+            });
+            return result;
+        };
+
+        const HISTORY_KB = parseHistoryData();
+        const GEO_KB = parseGeoData(RAW_GEO_DATA, RAW_GEO_HAP_BILGI);
+
+        // --- DEVLET YÖNETİMİ (STATE) ---
+        let gameState = 'subjectSelect';
+        let selectedSubject = null;
+        let quizSet = [];
+        let currentIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+        let isAnswered = false;
+        let isSingleQuestion = false;
+        let userAnswers = {};
+        let gridStatus = {};
+
+        // --- YARDIMCI FONKSİYONLAR ---
+        function generateHistoryQuizSet(mode) {
+            let baseSet = [...HISTORY_KB];
+            if (mode === 'random20') baseSet = baseSet.sort(() => 0.5 - Math.random()).slice(0, 20);
+
+            return baseSet.map((item) => {
+                let distractorPool = HISTORY_KB.filter((x) => Math.abs(x.id - item.id) <= 20 && x.id !== item.id);
+                if (distractorPool.length < 4) distractorPool = HISTORY_KB.filter((x) => x.id !== item.id);
+                
+                distractorPool = distractorPool.sort(() => 0.5 - Math.random());
+                const options = distractorPool.slice(0, 4).map((x) => x.topic);
+                const correctIndex = Math.floor(Math.random() * 5);
+                options.splice(correctIndex, 0, item.topic);
+
+                return {
+                    id: item.id,
+                    topic: item.topic,
+                    questionText: `"${item.detail}"\n\nYukarıda özelliği, tanımı veya önemi verilen tarihi kişi, olay veya kavram aşağıdakilerden hangisidir?`,
+                    options: options,
+                    correctAnswer: correctIndex,
+                    explanation: `${item.topic}: ${item.detail}`,
+                };
+            });
+        }
+
+        function generateGeoQuizSet(mode) {
+            let baseSet = [...GEO_KB];
+            if (mode === 'random20') baseSet = baseSet.sort(() => 0.5 - Math.random()).slice(0, 20);
+            return baseSet;
+        }
+
+        function getTheme() {
+            if (selectedSubject === 'tarih') {
+                return {
+                    color: 'amber',
+                    bg50: 'bg-amber-50',
+                    bg100: 'bg-amber-100',
+                    bg500: 'bg-amber-500',
+                    bg600: 'bg-amber-600',
+                    bg700: 'bg-amber-700',
+                    text500: 'text-amber-500',
+                    text600: 'text-amber-600',
+                    text700: 'text-amber-700',
+                    text800: 'text-amber-800',
+                    text900: 'text-amber-900',
+                    border100: 'border-amber-100',
+                    border200: 'border-amber-200',
+                    border400: 'border-amber-400',
+                    hoverBg700: 'hover:bg-amber-700',
+                    hoverBorder400: 'hover:border-amber-400',
+                    icon: 'book-open'
+                };
+            } else {
+                return {
+                    color: 'emerald',
+                    bg50: 'bg-emerald-50',
+                    bg100: 'bg-emerald-100',
+                    bg500: 'bg-emerald-500',
+                    bg600: 'bg-emerald-600',
+                    bg700: 'bg-emerald-700',
+                    text500: 'text-emerald-500',
+                    text600: 'text-emerald-600',
+                    text700: 'text-emerald-700',
+                    text800: 'text-emerald-800',
+                    text900: 'text-emerald-900',
+                    border100: 'border-emerald-100',
+                    border200: 'border-emerald-200',
+                    border400: 'border-emerald-400',
+                    hoverBg700: 'hover:bg-emerald-700',
+                    hoverBorder400: 'hover:border-emerald-400',
+                    icon: 'map'
+                };
+            }
+        }
+
+        function updateDOM(htmlString) {
+            document.getElementById('app-container').innerHTML = htmlString;
+            lucide.createIcons();
+        }
+
+        // --- AKSİYONLAR ---
+        window.handleSubjectSelect = (subject) => {
+            selectedSubject = subject;
+            gameState = 'modeSelect';
+            renderApp();
+        };
+
+        window.setGameState = (state) => {
+            gameState = state;
+            renderApp();
+        };
+
+        window.startQuiz = (mode) => {
+            quizSet = selectedSubject === 'tarih' ? generateHistoryQuizSet(mode) : generateGeoQuizSet(mode);
+            currentIndex = 0;
+            score = 0;
+            userAnswers = {};
+            gridStatus = {};
+            selectedOption = null;
+            isAnswered = false;
+            isSingleQuestion = false;
+            gameState = 'playing';
+            renderApp();
+        };
+
+        window.openQuestionGrid = () => {
+            quizSet = selectedSubject === 'tarih' ? generateHistoryQuizSet('all') : generateGeoQuizSet('all');
+            userAnswers = {};
+            gridStatus = {};
+            score = 0;
+            gameState = 'questionGrid';
+            renderApp();
+        };
+
+        window.openSingleQuestion = (index) => {
+            currentIndex = index;
+            if (userAnswers[index] !== undefined) {
+                selectedOption = userAnswers[index];
+                isAnswered = true;
+            } else {
+                selectedOption = null;
+                isAnswered = false;
+            }
+            isSingleQuestion = true;
+            gameState = 'playing';
+            renderApp();
+        };
+
+        window.handleAnswerClick = (index) => {
+            if (isAnswered) return;
+            selectedOption = index;
+            isAnswered = true;
+            
+            const isCorrect = index === quizSet[currentIndex].correctAnswer;
+            if (isCorrect) score++;
+
+            userAnswers[currentIndex] = index;
+            gridStatus[currentIndex] = isCorrect ? 'correct' : 'wrong';
+            
+            renderApp();
+        };
+
+        window.nextQuestion = () => {
+            if (currentIndex + 1 < quizSet.length) {
+                currentIndex++;
+                selectedOption = null;
+                isAnswered = false;
+                renderApp();
+            } else {
+                gameState = 'result';
+                renderApp();
+            }
+        };
+
+        window.finishQuizEarly = () => {
+            gameState = 'result';
+            renderApp();
+        };
+
+        // --- RENDER GÖRÜNÜMLERİ ---
+        function renderSubjectSelect() {
+            return `
+            <div class="flex-1 flex flex-col items-center justify-center p-6 space-y-8 animate-fade-in bg-gradient-to-b from-slate-50 to-white text-center h-full relative z-10 w-full">
+              <div>
+                <h1 class="text-3xl font-extrabold text-slate-800 mb-3 leading-tight tracking-tight">
+                  KPSS Hap Bilgiler Soru Bankası
+                </h1>
+                <p class="text-slate-500 text-sm leading-relaxed px-2">
+                  Lütfen testini çözmek istediğiniz dersi seçin.
+                </p>
+              </div>
+              
+              <div class="flex flex-col gap-5 w-full mt-2">
+                <button 
+                  onclick="handleSubjectSelect('tarih')"
+                  class="w-full flex items-center justify-start gap-4 bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 font-semibold p-6 rounded-[1.5rem] transition-all shadow-sm active:scale-95 group relative overflow-hidden"
+                >
+                  <div class="bg-amber-500 p-4 rounded-2xl shadow-md group-hover:scale-110 transition-transform">
+                    <i data-lucide="book-open" class="text-white w-7 h-7"></i>
+                  </div>
+                  <div class="text-left">
+                    <div class="text-xl font-bold mb-1">Tarih</div>
+                    <div class="text-sm font-medium text-amber-700 opacity-80">120 Kritik Soru</div>
+                  </div>
+                  <i data-lucide="chevron-right" class="absolute right-6 text-amber-400 w-6 h-6"></i>
+                </button>
+
+                <button 
+                  onclick="handleSubjectSelect('cografya')"
+                  class="w-full flex items-center justify-start gap-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 font-semibold p-6 rounded-[1.5rem] transition-all shadow-sm active:scale-95 group relative overflow-hidden"
+                >
+                  <div class="bg-emerald-500 p-4 rounded-2xl shadow-md group-hover:scale-110 transition-transform">
+                    <i data-lucide="map" class="text-white w-7 h-7"></i>
+                  </div>
+                  <div class="text-left">
+                    <div class="text-xl font-bold mb-1">Coğrafya</div>
+                    <div class="text-sm font-medium text-emerald-700 opacity-80">100 Seçkin Soru</div>
+                  </div>
+                  <i data-lucide="chevron-right" class="absolute right-6 text-emerald-400 w-6 h-6"></i>
+                </button>
+              </div>
+
+              <!-- Sol Alttaki PP (Logo) Kısmı -->
+              <div class="absolute bottom-5 left-6">
+                <img src="logo.png" alt="App Logo" class="w-10 h-10 rounded-xl shadow-md border border-slate-200 object-cover">
+              </div>
+
+              <div class="absolute bottom-6 right-6 text-[13px] font-medium text-slate-400">
+                Creator by Furkan Aydemir :)
+              </div>
+            </div>`;
+        }
+
+        function renderModeSelect() {
+            const isHistory = selectedSubject === 'tarih';
+            const totalQuestions = isHistory ? HISTORY_KB.length : GEO_KB.length;
+            const theme = getTheme();
+
+            return `
+            <div class="flex-1 flex flex-col items-center justify-center p-6 space-y-6 animate-fade-in bg-gradient-to-b from-slate-50 to-white text-center h-full relative z-10 w-full">
+              <button 
+                onclick="setGameState('subjectSelect')"
+                class="absolute top-6 left-4 p-3 rounded-full hover:bg-slate-100 text-slate-500 transition-colors"
+              >
+                <i data-lucide="arrow-left" class="w-6 h-6"></i>
+              </button>
+
+              <div class="${theme.bg100} p-5 rounded-3xl shadow-sm border ${theme.border200}">
+                <i data-lucide="${theme.icon}" class="w-12 h-12 ${theme.text600}"></i>
+              </div>
+              
+              <div>
+                <h2 class="text-2xl font-extrabold text-slate-800 mb-2">
+                  ${isHistory ? 'Tarih' : 'Coğrafya'} Testi
+                </h2>
+                <p class="text-slate-500 text-sm">Nasıl devam etmek istersiniz?</p>
+              </div>
+              
+              <div class="flex flex-col gap-4 w-full mt-6">
+                <button 
+                  onclick="openQuestionGrid()"
+                  class="w-full flex items-center justify-center gap-3 ${theme.bg600} ${theme.hoverBg700} text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-md active:scale-95 text-lg"
+                >
+                  <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                  Tüm Sorular (${totalQuestions} Soru)
+                </button>
+                <button 
+                  onclick="startQuiz('random20')"
+                  class="w-full flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-md active:scale-95 text-lg"
+                >
+                  <i data-lucide="target" class="w-5 h-5"></i>
+                  Rastgele 20 Soru
+                </button>
+              </div>
+            </div>`;
+        }
+
+        function renderQuestionGrid() {
+            const theme = getTheme();
+            
+            let gridHtml = '';
+            for (let i = 0; i < quizSet.length; i++) {
+                const status = gridStatus[i];
+                let btnClass = "bg-white border border-slate-200 text-slate-700 hover:border-slate-400";
+                if (status === 'correct') btnClass = "bg-green-500 border-green-500 text-white font-bold shadow-sm";
+                if (status === 'wrong') btnClass = "bg-red-500 border-red-500 text-white font-bold shadow-sm";
+
+                gridHtml += `
+                <button
+                  onclick="openSingleQuestion(${i})"
+                  class="aspect-square flex items-center justify-center rounded-xl text-lg font-semibold transition-all active:scale-90 ${btnClass}"
+                >
+                  ${i + 1}
+                </button>`;
+            }
+
+            return `
+            <div class="flex-1 flex flex-col h-full bg-slate-50 animate-fade-in relative z-10 w-full">
+              <div class="bg-white pt-6 pb-4 px-5 shadow-sm shrink-0 rounded-b-3xl">
+                <div class="flex items-center gap-3 mb-4">
+                  <button 
+                    onclick="setGameState('modeSelect')"
+                    class="p-2 rounded-full hover:bg-slate-100 text-slate-500 transition-colors"
+                  >
+                    <i data-lucide="arrow-left" class="w-6 h-6"></i>
+                  </button>
+                  <h2 class="text-xl font-bold text-slate-800">
+                    ${selectedSubject === 'tarih' ? 'Tarih' : 'Coğrafya'} Soruları
+                  </h2>
+                </div>
+                
+                <button 
+                  onclick="startQuiz('all')"
+                  class="w-full flex items-center justify-center gap-2 ${theme.bg600} ${theme.hoverBg700} text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md active:scale-95 text-base"
+                >
+                  <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                  Hepsini Çöz
+                </button>
+              </div>
+
+              <div class="flex-1 overflow-y-auto p-5 scrollbar-hide">
+                <div class="grid grid-cols-4 sm:grid-cols-5 gap-3 pb-8">
+                  ${gridHtml}
+                </div>
+              </div>
+            </div>`;
+        }
+
+        function renderPlaying() {
+            const currentQ = quizSet[currentIndex];
+            const progressPercent = ((currentIndex) / quizSet.length) * 100;
+            const theme = getTheme();
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            let optionsHtml = '';
+            currentQ.options.forEach((opt, index) => {
+                let btnClass = "bg-white border border-slate-200 text-slate-700";
+                let iconHtml = '';
+
+                if (isAnswered) {
+                    if (index === currentQ.correctAnswer) {
+                        btnClass = "bg-green-500 border-green-500 text-white shadow-md font-semibold";
+                        iconHtml = `<i data-lucide="check-circle-2" class="text-white shrink-0 w-5 h-5"></i>`;
+                    } else if (index === selectedOption && index !== currentQ.correctAnswer) {
+                        btnClass = "bg-red-500 border-red-500 text-white";
+                        iconHtml = `<i data-lucide="x-circle" class="text-white shrink-0 w-5 h-5"></i>`;
+                    } else {
+                        btnClass = "bg-slate-50 border-slate-100 text-slate-400 opacity-50";
+                    }
+                } else {
+                    btnClass += ` active:scale-[0.98] ${theme.hoverBorder400}`;
+                }
+
+                optionsHtml += `
+                <button
+                  ${isAnswered ? 'disabled' : ''}
+                  onclick="handleAnswerClick(${index})"
+                  class="w-full text-left p-4 rounded-xl text-[15px] transition-all duration-200 flex justify-between items-center ${btnClass} ${isAnswered ? 'cursor-default' : ''}"
+                >
+                  <span class="pr-3"><span class="font-bold mr-2 opacity-70">${optionLetters[index]})</span> ${opt}</span>
+                  ${iconHtml}
+                </button>`;
+            });
+
+            let explanationHtml = '';
+            let bottomActionHtml = '';
+
+            if (isAnswered) {
+                explanationHtml = `
+                <div class="mt-auto animate-fade-in-up pb-4 shrink-0">
+                  <div class="${theme.bg50} border ${theme.border100} p-4 rounded-xl flex flex-col gap-3">
+                    <div class="flex items-start gap-3">
+                      <i data-lucide="info" class="${theme.text500} shrink-0 mt-0.5 w-5 h-5"></i>
+                      <div class="text-sm">
+                        <span class="font-bold ${theme.text900} block mb-1">
+                           ${selectedSubject === 'tarih' ? 'Çözüm:' : 'Hap Bilgi:'}
+                        </span>
+                        <span class="${theme.text800} leading-snug whitespace-pre-wrap">${currentQ.explanation}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
+
+                if (isSingleQuestion) {
+                    bottomActionHtml = `
+                    <div class="bg-white p-4 border-t border-slate-100 z-10 shrink-0 shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.05)] animate-fade-in-up">
+                       <button
+                         onclick="setGameState('questionGrid')"
+                         class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold py-4 rounded-xl shadow-lg transition-all active:scale-95 text-lg"
+                       >
+                         <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                         Soru Listesine Dön
+                       </button>
+                    </div>`;
+                } else {
+                    const btnText = (currentIndex + 1 === quizSet.length) ? 'Sonuçları Gör' : 'Sıradaki Soru';
+                    bottomActionHtml = `
+                    <div class="bg-white p-4 border-t border-slate-100 z-10 shrink-0 shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.05)] animate-fade-in-up">
+                       <button
+                          onclick="nextQuestion()"
+                          class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold py-4 rounded-xl shadow-lg transition-all active:scale-95 text-lg"
+                        >
+                          ${btnText}
+                          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>`;
+                }
+            }
+
+            const headerBtnHtml = isSingleQuestion 
+                ? `<button onclick="setGameState('questionGrid')" class="text-slate-500 hover:text-slate-700 text-sm font-semibold p-2 -mr-2">Geri Dön</button>`
+                : `<button onclick="finishQuizEarly()" class="text-red-500 hover:text-red-700 text-sm font-semibold p-2 -mr-2">Bitir</button>`;
+
+            return `
+            <div class="flex flex-col h-full w-full bg-slate-50 animate-fade-in">
+              <!-- Header Section -->
+              <div class="bg-white pt-6 pb-4 px-5 shadow-sm z-10 rounded-b-3xl shrink-0">
+                <div class="flex justify-between items-center mb-4">
+                  <span class="${theme.bg100} ${theme.text800} font-bold px-3 py-1 rounded-lg text-sm">
+                    ${currentIndex + 1} / ${quizSet.length}
+                  </span>
+                  <span class="bg-slate-800 text-white font-bold px-3 py-1 rounded-lg text-sm flex items-center gap-1">
+                     <i data-lucide="check-circle-2" class="w-4 h-4"></i> ${score} Doğru
+                  </span>
+                  ${headerBtnHtml}
+                </div>
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                  <div 
+                    class="${theme.bg500} h-1.5 transition-all duration-500 ease-out" 
+                    style="width: ${progressPercent}%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Scrollable Area -->
+              <div class="flex-1 overflow-y-auto p-5 scrollbar-hide flex flex-col relative">
+                <!-- Question Box -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 mb-6 shrink-0">
+                  <p class="text-[16px] text-slate-800 font-medium leading-relaxed whitespace-pre-wrap">${currentQ.questionText}</p>
+                </div>
+
+                <!-- Options List -->
+                <div class="flex flex-col gap-3 pb-6 shrink-0">
+                  ${optionsHtml}
+                </div>
+
+                <!-- Explanation Box -->
+                ${explanationHtml}
+              </div>
+
+              <!-- Bottom Sticky Button Area -->
+              ${bottomActionHtml}
+            </div>`;
+        }
+
+        function renderResult() {
+            const totalAnswered = currentIndex + (isAnswered ? 1 : 0);
+            const percentage = totalAnswered === 0 ? 0 : Math.round((score / totalAnswered) * 100);
+            const theme = getTheme();
+            
+            let message = "Harika iş çıkardın!";
+            if (percentage < 50) message = "Biraz daha tekrar yapmanda fayda var.";
+            else if (percentage < 80) message = "İyi bir temel atmışsın, devam et!";
+
+            return `
+            <div class="flex-1 flex flex-col items-center justify-center p-6 animate-fade-in bg-white text-center h-full relative z-10 w-full">
+              <div class="bg-yellow-100 p-6 rounded-full mb-6 shadow-inner">
+                <i data-lucide="trophy" class="text-yellow-500 w-16 h-16"></i>
+              </div>
+              <h2 class="text-3xl font-extrabold text-slate-800 mb-2">Test Bitti</h2>
+              <p class="text-slate-500 text-[15px] mb-10">${message}</p>
+              
+              <div class="flex w-full gap-4 mb-10">
+                <div class="flex-1 bg-slate-50 py-6 px-2 rounded-2xl border border-slate-100">
+                  <div class="text-xs text-slate-500 mb-1 font-semibold uppercase tracking-wider">Doğru</div>
+                  <div class="text-3xl font-black text-slate-800">${score} <span class="text-lg text-slate-400 font-medium">/ ${totalAnswered}</span></div>
+                </div>
+                <div class="flex-1 ${theme.bg50} py-6 px-2 rounded-2xl border ${theme.border100}">
+                  <div class="text-xs ${theme.text600} mb-1 font-semibold uppercase tracking-wider">Başarı</div>
+                  <div class="text-3xl font-black ${theme.text700}">%${percentage}</div>
+                </div>
+              </div>
+
+              <button 
+                onclick="setGameState('subjectSelect')"
+                class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold py-4 px-8 rounded-2xl transition-all shadow-md active:scale-95 text-lg"
+              >
+                <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                Ana Menüye Dön
+              </button>
+            </div>`;
+        }
+
+        function renderApp() {
+            let htmlContent = '';
+            if (gameState === 'subjectSelect') htmlContent = renderSubjectSelect();
+            else if (gameState === 'modeSelect') htmlContent = renderModeSelect();
+            else if (gameState === 'questionGrid') htmlContent = renderQuestionGrid();
+            else if (gameState === 'playing') htmlContent = renderPlaying();
+            else if (gameState === 'result') htmlContent = renderResult();
+
+            updateDOM(htmlContent);
+        }
+
+        // Initialize App
+        renderApp();
+
+    </script>
+</body>
+</html>
